@@ -1,0 +1,55 @@
+Réponses aux Questions du TP
+Az-eddine ABOUHAFS 
+
+i)Mise en Oeuvre
+
+1)La topology est appelée Topologie client-serveur. Le role du serveur est de centraliser les connexions et permet aussi aux clients de communiquer entre eux via lui.
+
+2)On remarque que les messages échangés par les différents clients sont affichés en clair sans chiffrement.
+
+3)Ceci est un problème parce que les messages doivent restés confidentiels entre les clients. Dans ce cas, si quelqu'un peut accéder au serveur, il peut facilement voir ces données.
+
+4)La solution qui est cohérente pour ce problème est d'ajouter un mécanisme de chiffrement pour garantir la confidentialité et l'intégrité des messages.
+
+
+********************************************************************************
+
+ii) Chiffrement
+
+1)On peut dire que urandom est fiable en termes de génération des octets aléatoires parce qu'il se base sur des entropies fournis par l'os, donc il est imprévisible.
+
+2)L'utilisation des prémitives est dangereux parce que ne mauvaise implémentation peut affaiblir la sécurité globale.
+
+3)Un serveur malveillant est une problématique car 
+les messages chiffrés sont interceptés, modifiés, ou meme réutilisés.
+
+4)Il faut une authentification des messages pour savoir que le message provient bien de l'expiditeur attendu.
+
+
+*********************************************************************************
+
+iii) Authenticated Symetric Encryption
+
+1)Fernet est moins risqué parce qu'il utilise le HMAC (hash-based message auhentification code) qui permet l'authentification des messages et aussi feret utilise le chiffrement symétrique
+
+2)Cette attaque est appelée "Attaque par Rejeu" où les messages sont interceptés et modifiés
+
+3)Il faut utiliser un timestamp qui est une méthode efficace. Comme ça les messages trop anciens seront rejetés et drendront inefficace une attaque par rejeu.
+
+*********************************************************************************
+
+iv) TTL
+
+1)Le TTL utlisié introduit une gestion supplémentaire du temps de validité des messages.
+
+2)Le message sera rejeté, car il sera considéré comme expiré par le système parce que le fait de soustraire 45 secondes rend le message trop ancien par rapport à la durée de vie autorisée.
+
+3)Oui et non, cette méthode est efficace contre les hackeurs lents, par contre si le message est interceptés dans les 30secondes, dans ce cas c'est pas efficace.
+
+4)On peut rencontrer des problèmes dans cette solution, parmi ces problèmes : la désynchronisation des hormoges entre les clients et l eserveur ce qui pourrait entrainer le rejet incorrect de messages valides.
+
+**********************************************************************************
+
+Ragard Critique
+
+Oui, il est très probable que des vulnérabilités subsistent. Dans le domaine de la cybersécurité, il n'existe pas de système totalement invulnérable. L'utilisation de bibliothèques tierces, bien qu'elles simplifient l'implémentation, peut introduire des failles cachées. En effet, comme je ne maîtrise pas totalement leur fonctionnement interne, je ne peux pas garantir qu'elles sont sans défaut
